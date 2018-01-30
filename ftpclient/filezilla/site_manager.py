@@ -1,29 +1,12 @@
-import os.path
 from xml.etree import ElementTree
+import os.path
 import base64
 
+from ftpclient.filezilla import *
+# from ftpclient.filezilla.server import Server
+# from ftpclient.filezilla.server_iterator import ServerIterator
 
-class ServerIterator:
-    def __init__(self, site_manager):
-        self.servers = site_manager.servers
-        self.idx = 0
-
-    def __next__(self):
-        if self.idx < len(self.servers):
-            result = self.servers[self.idx]
-            self.idx += 1
-            return result
-        else:
-            raise StopIteration
-
-
-class Server:
-    def __init__(self, host, port, user, password, name):
-        self.host = host
-        self.port = port
-        self.user = user
-        self.password = password
-        self.name = name
+__all__ = ["SiteManager"]
 
 
 class SiteManager:
